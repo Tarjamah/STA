@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>STA — User Guide</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #f9fafb;
+      color: #111827;
+      line-height: 1.65;
+      padding: 2.5rem 1rem 4rem;
+    }
+
+    .page { max-width: 780px; margin: 0 auto; }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: .25rem;
+    }
+    .subtitle {
+      color: #6b7280;
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+    }
+
+    h2 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: #374151;
+      margin: 2.5rem 0 1rem;
+      padding-bottom: .4rem;
+      border-bottom: 2px solid #e5e7eb;
+    }
+
+    .step {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+    }
+    .step-num {
+      flex-shrink: 0;
+      width: 2rem;
+      height: 2rem;
+      background: #111827;
+      color: #fff;
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: .85rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: .1rem;
+    }
+    .step-body strong {
+      display: block;
+      font-size: 1rem;
+      margin-bottom: .2rem;
+    }
+    .step-body p, .step-body ul {
+      color: #374151;
+      font-size: .93rem;
+    }
+    .step-body ul {
+      padding-left: 1.1rem;
+      margin-top: .3rem;
+    }
+    .step-body li { margin-bottom: .2rem; }
+
+    .note {
+      background: #fffbeb;
+      border-left: 3px solid #f59e0b;
+      padding: .6rem .9rem;
+      border-radius: 0 6px 6px 0;
+      font-size: .88rem;
+      color: #78350f;
+      margin-top: .5rem;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .9rem;
+      margin-top: .5rem;
+    }
+    th {
+      text-align: left;
+      padding: .5rem .75rem;
+      background: #f3f4f6;
+      border: 1px solid #e5e7eb;
+      font-weight: 600;
+    }
+    td {
+      padding: .45rem .75rem;
+      border: 1px solid #e5e7eb;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f9fafb; }
+
+    kbd {
+      display: inline-block;
+      padding: .1em .45em;
+      background: #f3f4f6;
+      border: 1px solid #d1d5db;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: .82em;
+      color: #111827;
+    }
+
+    .export-list { margin-top: .3rem; padding-left: 1.1rem; font-size: .9rem; color: #374151; }
+    .export-list li { margin-bottom: .2rem; }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <h1>Sight Translation Assessment</h1>
+  <p class="subtitle">User Guide &mdash; follow the tabs in order for each session.</p>
+
+  <!-- ═══════════════════════════════════════════ WORKFLOW -->
+  <h2>Session Workflow</h2>
+
+  <div class="step">
+    <div class="step-num">1</div>
+    <div class="step-body">
+      <strong>Settings <span style="font-weight:400;color:#6b7280;">(Tab 1 &mdash; <kbd>⌘1</kbd> / <kbd>Ctrl+1</kbd>)</span></strong>
+      <p>Configure everything before starting a session.</p>
+      <ul>
+        <li><b>Source Text</b> &mdash; paste the text the participant will translate. Use the font, size, weight, slant, and color controls to style it for the participant's screen.</li>
+        <li><b>OpenAI API Key</b> &mdash; required for transcription and scoring. Enter your key (<code>sk-…</code>) and click <b>Save</b>.</li>
+        <li><b>Model</b> &mdash; choose the GPT model used for scoring (default: <code>gpt-4o-mini</code>).</li>
+        <li><b>Silence Threshold</b> &mdash; minimum pause duration (ms) counted as silence in acoustic analysis.</li>
+        <li><b>Audio Devices</b> &mdash; select the microphone (Input) and speakers (Output). Click <b>Refresh</b> if a device isn't listed.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">2</div>
+    <div class="step-body">
+      <strong>Participant <span style="font-weight:400;color:#6b7280;">(Tab 2 &mdash; <kbd>⌘2</kbd> / <kbd>Ctrl+2</kbd>)</span></strong>
+      <p>Enter the participant's information. <b>Participant ID is required</b>; all other fields are optional.</p>
+      <ul>
+        <li>Fill in demographics: age, gender, native language, target language, years of experience, education level.</li>
+        <li>Check <b>Vision Issues</b> or <b>Speech Issues</b> if applicable and add details.</li>
+        <li>Indicate whether the participant has taken a sight translation course.</li>
+        <li>Click <b>Save Participant</b> when done.</li>
+        <li>Click <b>Reset / New</b> to clear the form for a different participant (destructive — cannot be undone).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">3</div>
+    <div class="step-body">
+      <strong>Recording <span style="font-weight:400;color:#6b7280;">(Tab 3 &mdash; <kbd>⌘3</kbd> / <kbd>Ctrl+3</kbd>)</span></strong>
+      <p>Record the participant's spoken translation.</p>
+      <ul>
+        <li>Click <b>Start Recording</b> (or press <kbd>R</kbd>) when the participant begins.</li>
+        <li>Click <b>Stop Recording</b> (or press <kbd>R</kbd> again) when finished.</li>
+        <li>Play back the recording to verify audio quality before proceeding.</li>
+      </ul>
+      <div class="note">The recording timer and waveform update live during recording.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">4</div>
+    <div class="step-body">
+      <strong>Acoustic Analysis <span style="font-weight:400;color:#6b7280;">(Tab 4 &mdash; <kbd>⌘4</kbd> / <kbd>Ctrl+4</kbd>)</span></strong>
+      <p>Click <b>Run Acoustic Analysis</b> to extract speech metrics from the recording.</p>
+      <ul>
+        <li>Results include pitch, intensity, and speech/silence interval data.</li>
+        <li>This step is optional but enables richer exports and GPT scoring context.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">5</div>
+    <div class="step-body">
+      <strong>Waveform <span style="font-weight:400;color:#6b7280;">(Tab 5 &mdash; <kbd>⌘5</kbd> / <kbd>Ctrl+5</kbd>)</span></strong>
+      <p>Review the waveform with speech/silence intervals overlaid.</p>
+      <ul>
+        <li><b>Play From Start</b> / <b>Play From Cursor</b> &mdash; or press <kbd>Space</kbd> to toggle play/stop.</li>
+        <li>Click anywhere on the waveform to move the cursor.</li>
+        <li><kbd>+</kbd> / <kbd>-</kbd> to zoom in/out; <kbd>0</kbd> to fit the full recording in view.</li>
+        <li>Adjust playback <b>Speed</b> (0.75×, 1×, 1.25×, 1.5×).</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">6</div>
+    <div class="step-body">
+      <strong>AI Analysis <span style="font-weight:400;color:#6b7280;">(Tab 6 &mdash; <kbd>⌘6</kbd> / <kbd>Ctrl+6</kbd>)</span></strong>
+      <p>Run AI-powered transcription and quality scoring. Requires an OpenAI API key.</p>
+      <ul>
+        <li><b>Run Whisper</b> (<kbd>⌘Return</kbd> / <kbd>Ctrl+Enter</kbd>) &mdash; transcribes the recording using OpenAI Whisper. The transcript appears below with correct RTL layout for Arabic.</li>
+        <li><b>Run GPT Scoring</b> (<kbd>⌘⇧Return</kbd> / <kbd>Ctrl+Shift+Enter</kbd>) &mdash; scores the translation for accuracy, completeness, fluency, and terminology. Requires a transcript first.</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">7</div>
+    <div class="step-body">
+      <strong>Export <span style="font-weight:400;color:#6b7280;">(Tab 7 &mdash; <kbd>⌘7</kbd> / <kbd>Ctrl+7</kbd>)</span></strong>
+      <p>Export all session data. A Participant ID and a Recording are required; all other steps are optional.</p>
+      <p>Click <b>Export Full Report</b> (<kbd>⌘E</kbd> / <kbd>Ctrl+E</kbd>) and choose a save location. The output is a <code>.zip</code> containing:</p>
+      <ul class="export-list">
+        <li><code>{id}_report.xlsx</code> &mdash; participant info, settings, acoustic metrics, AI scores, and transcript</li>
+        <li><code>{id}_recording.wav</code> &mdash; the original audio file</li>
+        <li><code>{id}_waveform.png</code> / <code>.svg</code> &mdash; waveform image exports</li>
+      </ul>
+      <div class="note">The readiness checklist on this tab shows which steps are complete. Missing optional steps are noted in the export but do not block it.</div>
+    </div>
+  </div>
+
+  <div class="step">
+    <div class="step-num">8</div>
+    <div class="step-body">
+      <strong>Refresh <span style="font-weight:400;color:#6b7280;">(Tab 8 &mdash; <kbd>⌘8</kbd> / <kbd>Ctrl+8</kbd>)</span></strong>
+      <p>Click <b>Start New Session</b> to clear all session data (recording, analysis, participant) and begin the next participant. Settings are preserved.</p>
+      <div class="note">This action is permanent and cannot be undone. Always export first.</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ SHORTCUTS -->
+  <h2>Keyboard Shortcuts</h2>
+  <table>
+    <thead>
+      <tr><th>Action</th><th>Mac</th><th>Windows / Linux</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Switch to tab 1–8</td><td><kbd>⌘1</kbd> – <kbd>⌘8</kbd></td><td><kbd>Ctrl+1</kbd> – <kbd>Ctrl+8</kbd></td></tr>
+      <tr><td>Play / stop audio (global)</td><td><kbd>Space</kbd></td><td><kbd>Space</kbd></td></tr>
+      <tr><td>Start / stop recording (Recording tab)</td><td><kbd>R</kbd></td><td><kbd>R</kbd></td></tr>
+      <tr><td>Run Whisper transcription (AI Analysis tab)</td><td><kbd>⌘Return</kbd></td><td><kbd>Ctrl+Enter</kbd></td></tr>
+      <tr><td>Run GPT scoring (AI Analysis tab)</td><td><kbd>⌘⇧Return</kbd></td><td><kbd>Ctrl+Shift+Enter</kbd></td></tr>
+      <tr><td>Export report (Export tab)</td><td><kbd>⌘E</kbd></td><td><kbd>Ctrl+E</kbd></td></tr>
+      <tr><td>Zoom in / out (Waveform tab)</td><td><kbd>+</kbd> / <kbd>-</kbd></td><td><kbd>+</kbd> / <kbd>-</kbd></td></tr>
+      <tr><td>Fit waveform to view (Waveform tab)</td><td><kbd>0</kbd></td><td><kbd>0</kbd></td></tr>
+    </tbody>
+  </table>
+
+  <!-- ═══════════════════════════════════════════ TIPS -->
+  <h2>Tips</h2>
+  <ul style="padding-left:1.1rem;font-size:.93rem;color:#374151;">
+    <li>Settings and participant data are saved automatically; you can close and reopen the app without losing them.</li>
+    <li>If a button is disabled, hover over it — the tooltip explains what is missing.</li>
+    <li>The API key is stored locally and never transmitted except to OpenAI's API.</li>
+    <li>To use a different GPT model, type it directly into the Model field in Settings.</li>
+  </ul>
+
+</div>
+</body>
+</html>
